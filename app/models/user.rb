@@ -1,8 +1,6 @@
 class User < ApplicationRecord
-
-        # ASSOCIATION WITH QUESTIONS & ANSWERS MODEL
-        has_many :questions, dependent: :nullify  
-        has_many :answers, dependent: :nullify  
+    has_many :questions, dependent: :nullify
+    has_many :answers, dependent: :nullify
 
     has_secure_password
     # Provide user authentication feature on the model that it is called in
@@ -12,7 +10,6 @@ class User < ApplicationRecord
     # it cross verify the password with password confirmation text field
     # 👇🏻Sign In
     # it creates method 'authenticate' to verify password. if called with correct password it will retrun 'true' else 'false'
-
     def full_name
         "#{first_name} #{last_name}"
     end

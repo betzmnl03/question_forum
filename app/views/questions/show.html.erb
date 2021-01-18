@@ -1,7 +1,7 @@
 <h3><%=@question.title%></h3>
 <p><%= @question.body %></p>
 <div>
-    Created by: <%= @question.user&.full_name || "DELETED"%>
+    Created by: <%= @question.user&.full_name || "DELETED" %>
 </div>
 <div>
     <small>
@@ -15,13 +15,12 @@
 </small>
 </div>
 <small>
-    <% if can? :crud, @question%>
-    <%= link_to("Edit", edit_question_path(@question.id))%> 
-    | 
-    <%end%>
-    <% if can? :crud, @question%>
+    <% if can? :crud, @question %>
+    <%= link_to("Edit", edit_question_path(@question.id))%> | 
+    <% end %>
+    <% if can? :crud, @question %>
     <%= link_to("Delete",question_path(@question),method: :delete,data:{confirm: "Are you sure ?"})%>
-    <%end%>
+    <% end %>
 </small>
 <h3>Give your awesome answer here:</h3>
 <%= form_with model:[@question,@answer],local: true do |form|%>
@@ -47,13 +46,14 @@ placeholder: 'What are your thoughts?'%>
 <% @answers.each do |answer|%>
 <p>
 <%= answer.body %>
+
 <div>
     Answered by:
-    <%= answer.user&.full_name || "Deleted"%>
+    <%= answer.user&.full_name || "DELETED" %>
 </div>
-<% if can? :crud, answer%>
+<% if can? :crud, answer %>
 <%= link_to "Delete",question_answer_path(@question,answer), method: :delete,data: {confirm: "Are you sure?"} %>
-<%end%>
+<% end %>
 <hr>
 </p>
 <% end %> 

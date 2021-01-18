@@ -9,10 +9,8 @@ class Question < ApplicationRecord
 
     # ASSOCIATION WITH ANSWER MODEL
     has_many :answers, dependent: :destroy # in case of delete
-
     # ASSOCIATION WITH USER MODEL
-    belongs_to :user, optional:true
-
+    belongs_to :user, optional: true
     # To read more on validations, go to:
     # https://guides.rubyonrails.org/active_record_validations.html
     validates :title, presence: {message: 'must be provided'},uniqueness: true

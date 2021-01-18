@@ -2,13 +2,9 @@
 # rails g model answer body:text question:references
 # This Command generated 2 files one is this model the second is migration to create the anser table
 class Answer < ApplicationRecord
-
-      # ASSOCIATION WITH USER MODEL
-      belongs_to :user, optional:true
-
-      
+  # ASSOCIATION WITH USER MODEL
+  belongs_to :user, optional: true
   belongs_to :question
-  
   # This is autmatically added to a model when we use references :question
   # it generates a validation something like this 👇🏻:
   # validates :question_id, presence: true # but this is hidden from us

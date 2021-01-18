@@ -1,7 +1,9 @@
 <!-- NAVBAR -->
     <!-- link_to is a helper method provided by rails and   -->
     <!-- <a href='url'> LINK </a> 👈🏻 for normal html  -->
-    <nav>
+
+    <nav class="navbar navbar-primary bg-light d-flex justify-content-between">
+    <div>
         <%= link_to 'Home', root_path  %>
         |
         <%= link_to 'Questions', questions_path %>
@@ -9,13 +11,19 @@
         <%= link_to 'New Question', new_question_path %>
         |
         <%= link_to 'Contact Us', contact_path  %> 
-        |  <%# this will check whether the user has signed in or not using the helper method in the application_controller%>
-        <% if user_signed_in? %>
+        
+        </div> <%# this will check whether the user has signed in or not using the helper method in the application_controller%>
+        <div>
+        <%= link_to "Login", new_session_path%>|
+        <%= link_to "Sign Up", new_user_path%>
+       
+
+                <% if user_signed_in? %>
         Hello <%= current_user.full_name%>
             <%= link_to "Logout", session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}%>
         <%else%>
-        <%= link_to "Login", new_session_path%>|
-        <%= link_to "Sign Up", new_user_path%>
-        <%end%>
+         <%end%>
+        </div>
     </nav> 
+
         <!-- NAVBAR -->
