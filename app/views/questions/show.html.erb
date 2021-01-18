@@ -15,8 +15,13 @@
 </small>
 </div>
 <small>
-    <%= link_to("Edit", edit_question_path(@question.id))%> | 
+    <% if can? :crud, @question%>
+    <%= link_to("Edit", edit_question_path(@question.id))%> 
+    | 
+    <%end%>
+    <% if can? :crud, @question%>
     <%= link_to("Delete",question_path(@question),method: :delete,data:{confirm: "Are you sure ?"})%>
+    <%end%>
 </small>
 <h3>Give your awesome answer here:</h3>
 <%= form_with model:[@question,@answer],local: true do |form|%>
@@ -46,7 +51,9 @@ placeholder: 'What are your thoughts?'%>
     Answered by:
     <%= answer.user&.full_name || "Deleted"%>
 </div>
+<% if can? :crud, answer%>
 <%= link_to "Delete",question_answer_path(@question,answer), method: :delete,data: {confirm: "Are you sure?"} %>
+<%end%>
 <hr>
 </p>
 <% end %> 

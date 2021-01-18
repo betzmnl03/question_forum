@@ -14,7 +14,8 @@ super_user= User.create(
     first_name: 'Jon',
     last_name:'Snow',
     email: 'js@winterfell.gov',
-    password: PASSWORD
+    password: PASSWORD,
+    is_admin: true
 )
 
 10.times do
@@ -29,7 +30,7 @@ User.create(
 end
 users=User.all
 
-200.times do
+20.times do
      created_at=Faker::Date.backward(days: 365*5)
     q=Question.create(
         title: Faker::Hacker.say_something_smart,
