@@ -12,6 +12,6 @@ ActiveStorage.start()
 
 import "bootstrap";
 import '../stylesheets/application'
-import '../packs/question'
+import '../packs/questions'
 
 console.log('Hello from app/javascript/packs/application.js')
